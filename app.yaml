@@ -1,0 +1,26 @@
+# vim: set nospell:
+
+application: rlondonsocialclub
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+libraries:
+- name: markupsafe
+  version: "0.15"
+
+- name: setuptools
+  version: "0.6c11"
+
+- name: jinja2
+  version: "2.6"
+
+handlers:
+- url: /.*
+  script: app.app
+
+- url: /favicon.ico
+  static_files: static/favicon.ico
+  upload: static/favicon.ico
+

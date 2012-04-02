@@ -1,0 +1,4 @@
+# Developer requirements
+
+flask
+fabric
