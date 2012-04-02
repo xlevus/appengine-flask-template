@@ -1,4 +1,6 @@
 # Developer requirements
 
 flask
+werkzeug
 fabric
+jinja2

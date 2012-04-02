@@ -5,11 +5,17 @@ from fabric.context_managers import lcd
 ROOT = dirname(__file__)
 
 def download_packages():
-    from os import listdir
-    from os.path import splitext, isdir, join
+    """
+    Downloads packages in requirements.txt and installs them into
+    the packages folder.
+    """
+    from os import listdir, mkdir
+    from os.path import splitext, isdir, join, exists
     from shutil import rmtree
 
     PKG_DIR = join(ROOT, 'packages')
+    if not exists(PKG_DIR):
+        mkdir(PKG_DIR)
     local("pip install --no-install -d packages -r requirements.txt")
 
     def extract_folders():
@@ -38,3 +44,7 @@ def download_packages():
 
     extract_folders()
     zip_packages()
+
+def runserver():
+    local("google_appengine/dev_appserver.py .")
+
